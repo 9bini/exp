@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.kbin.exp.mybatis.onetomany.OneToMMapper">
+
+  <!-- SQL 외부에 정의된 태그로 SQL 결과 데이터를 어떻게 매핑할지에 대한 상세 제어를 가능하게 해줍니다. -->
+  <!-- <collection>에서 다른 <resultMap>을 참조할 때 그 <resultMap>에 autoMapping="true"를 추가 -->
+  <resultMap id="oneToMany" type="me.kbin.exp.mybatis.onetomany.OneToM">
+    <id column="OT_ID" property="id"/>
+    <collection property="ones" ofType="me.kbin.exp.mybatis.onetomany.One">
+      <result column="O_ID" property="id"/>
+    </collection>
+  </resultMap>
+
+
+  <select id="get" resultMap="oneToMany">
+    SELECT OT.ID AS OT_ID, O.ID AS O_ID, ONE_TOM_ID as ONE_TOM_ID
+    FROM ONE_TOM OT
+           JOIN ONE O ON OT.ID = O.ONE_TOM_ID
+    WHERE OT.ID = #{ID}
+  </select>
+</mapper>
