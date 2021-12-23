@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiServerController {
 
   @GetMapping
-  public ResponseEntity<MyRequest> get(){
+  public ResponseEntity<MyRequest> get() {
     MyRequest myRequest = new MyRequest(UserType.ADMIN);
     return new ResponseEntity<>(myRequest, HttpStatus.CREATED);
   }
 
   @PostMapping
-  public ResponseEntity<Void> post(@RequestBody MyRequest myRequest){
-    System.out.println(myRequest.getUserType());
-    return new ResponseEntity<>(HttpStatus.CREATED);
+  public ResponseEntity<String> post(@RequestBody MyRequest myRequest) {
+    return new ResponseEntity<>(myRequest.getUserType().getCode(), HttpStatus.CREATED);
   }
 }

@@ -1,24 +1,22 @@
 package me.kbin.exp.mybatis.tenum;
 
-import lombok.Getter;
 import me.kbin.exp.codeenum.CodeEnum;
 import org.apache.ibatis.type.MappedTypes;
 
-@Getter
-enum TEnum implements CodeEnum {
-  LOCAL("0001"), S3("0002");
+public enum TempEnum implements CodeEnum {
+  LOCAL("000A"),
+  S3("0002A");
 
   private final String code;
 
-  TEnum(String code) {
+  TempEnum(String code) {
     this.code = code;
   }
 
-  @MappedTypes(TEnum.class)
-  public static class TypeHandler extends CodeEnumTypeHandler<TEnum> {
-
+  @MappedTypes(TempEnum.class)
+  public static class TypeHandler extends CodeEnumTypeHandler<TempEnum> {
     public TypeHandler() {
-      super(TEnum.class);
+      super(TempEnum.class);
     }
   }
 

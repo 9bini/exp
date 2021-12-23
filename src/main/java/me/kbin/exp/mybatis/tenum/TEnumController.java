@@ -1,5 +1,6 @@
 package me.kbin.exp.mybatis.tenum;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +18,15 @@ public class TEnumController {
   TEnumMapper mapper;
 
   @PostMapping
-  public void post(@RequestBody TEnumEntity tEnumEntity) {
-    mapper.post(tEnumEntity);
+  public ResponseEntity<TempEnumEntity> post(@RequestBody TempEnumEntity tempEnumEntity) {
+    mapper.post(tempEnumEntity);
+    return new ResponseEntity<>(tempEnumEntity, HttpStatus.OK);
   }
 
-  @GetMapping
-  public ResponseEntity<TEnumEntity> get() {
-    TEnumEntity tEnumEntity = mapper.get(TEnum.S3);
-    return new ResponseEntity<>(tEnumEntity, HttpStatus.OK);
+  @GetMapping()
+  public ResponseEntity<List<TempEnumEntity>> get() {
+    List<TempEnumEntity> tempEnumEntity = mapper.get(TempEnum.S3);
+    return new ResponseEntity<>(tempEnumEntity, HttpStatus.OK);
   }
 }
 
