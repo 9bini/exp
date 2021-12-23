@@ -28,5 +28,7 @@ public class TEnumController {
     List<TempEnumEntity> tempEnumEntity = mapper.get(TempEnum.S3);
     return new ResponseEntity<>(tempEnumEntity, HttpStatus.OK);
   }
+
+
 }
 

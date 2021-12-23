@@ -10,6 +10,7 @@
     <setting name="logImpl" value="LOG4J" />
   </settings>
   <typeHandlers>
-    <typeHandler handler="me.kbin.exp.mybatis.tenum.TempEnum$TypeHandler" />
+<!--    <typeHandler handler="me.kbin.exp.mybatis.tenum.TempEnum$TypeHandler" />-->
+    <typeHandler handler="me.kbin.exp.mybatis.tenum.EnumUsingDbCodeTypeHandler" />
   </typeHandlers>
 </configuration>
