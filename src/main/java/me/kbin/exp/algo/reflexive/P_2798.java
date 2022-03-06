@@ -1,4 +1,4 @@
-package me.kbin.exp.algo;
+package me.kbin.exp.algo.reflexive;
 
 import java.util.Scanner;
 
